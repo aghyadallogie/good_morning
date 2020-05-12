@@ -24,10 +24,11 @@ fetch(url)
 // todo list
 const inputText = document.querySelector('#todoInput');
 const list = document.querySelector('ul');
+const form = document.querySelector('form');
 
 let elements = [];
 
-document.querySelector('form').addEventListener('submit', e => {
+form.addEventListener('submit', e => {
     e.preventDefault();
     if (inputText.value) {
         elements.unshift(inputText.value);
@@ -35,6 +36,7 @@ document.querySelector('form').addEventListener('submit', e => {
         display();
     }
     inputText.value = '';
+
 });
 
 window.onload = () => {
@@ -48,13 +50,37 @@ function delElement(index) {
     elements.splice(index, 1);
     localStorage.setItem('LOCAL-TODO-LIST', JSON.stringify(elements));
     display();
+    inputText.focus();
 }
 
 function display() {
     list.innerHTML = '';
     for (let index = 0; index < elements.length; index++) {
         list.innerHTML += `<li class="todoText" ondblclick=delElement(${index}) >${elements[index]}</li>`
-
     }
 }
 
+// analog clock
+
+const hourHand = document.getElementById('hourHand');
+const minuteHand = document.getElementById('minuteHand');
+const secondHand = document.getElementById('secondHand');
+
+function initClock() {
+    let date = new Date();
+    let hours = date.getHours() % 12;
+    let minutes = date.getMinutes();
+    let seconds = date.getSeconds();
+
+    let hourDeg = hours * 30,
+        minuteDeg = minutes * 6;
+    secondDeg = seconds * 6;
+
+    hourHand.style.transform = `rotate(${hourDeg}deg)`;
+    minuteHand.style.transform = `rotate(${minuteDeg}deg)`;
+    secondHand.style.transform = `rotate(${secondDeg}deg)`;
+
+    setTimeout(initClock, 1000);
+}
+
+initClock();

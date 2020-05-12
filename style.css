@@ -30,12 +30,17 @@ body {
   background-repeat: repeat;
   font: 1rem/1.3 "Roboto", sans-serif;
   color: var(--text_dark);
-  padding: 50px;
+  padding: 120px 50px 50px;
   background-size: 100%;
 }
 
-figcaption {
-  font-size: 1.3rem;
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  margin: 0;
+  padding: 0 15px;
 }
 
 span {
@@ -43,14 +48,25 @@ span {
 }
 
 form {
+  position: relative;
   margin: 0 auto;
   height: 60vh;
   width: 500px;
-  padding-top: 30px;
-  padding-left: 30px;
-  padding-right: 30px;
-  background-color: rgba(255, 243, 192, 0.4);
-  box-shadow: 3px 3px 3px rgba(128, 128, 128, 0.6);
+  padding: 40px;
+  background-color: rgba(255, 243, 192, 0.513);
+  box-shadow: 10px 13px rgba(255, 243, 192, 0.513);
+}
+
+form::after {
+  content: '';
+  height: 60vh;
+  width: 500px;
+  position: absolute;
+  bottom: -1%;
+  left: 1%;
+  z-index: -1;
+  opacity: 0.8;
+  background-color: inherit;
 }
 
 ul {
@@ -63,31 +79,9 @@ li {
   font-style: italic;
 }
 
-.delTodo {
-  color: rgb(73, 73, 73);
-  position: absolute;
-  font-size: 1.5rem;
-  font-weight: 900;
-  right: 1px;
-  cursor: pointer;
-  opacity: .8;
-}
-
 .todoText {
   color: rgb(73, 73, 73);
   font-size: 1.5rem;
-}
-
-.todoItem {
-  position: relative;
-  font-size: 0.3 rem;
-  padding-top: 7px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-.doneItem {
-  text-decoration: line-through;
 }
 
 #todoList {
@@ -96,31 +90,30 @@ li {
 }
 
 #todoInput {
-  border-radius: 3px;
   padding: 5px;
   width: 100%;
   border-style: none;
   background-color: none;
-  opacity: .4;
+  opacity: .3;
+  outline: none;
 }
 
-#btn {
-  width: 15%;
-  padding: 4px;
-  border-style: none;
-  border-radius: 3px;
-  border: 1px solid white;
+/* SECTION Clock –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.clock {
+  position: relative;
+  margin: 0 30px;
+  width: 400px;
+  height: 400px;
+  background: url('http://pantburk.info/upload/analogclock/bg_1000x1000.png');
+  background-size: contain;
 }
 
-.container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  width: 100%;
-  margin: 0;
-  padding: 0 15px;
+.hands {
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
-
 
 /* SECTION Temperature –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
@@ -129,6 +122,7 @@ li {
   width: 250px;
   height: 300px;
   padding: 15px;
+  padding-top: 25px;
   border-radius: 10%;
   background: rgba(255, 255, 255, 0.6);
   box-shadow: 3px 3px 3px rgba(128, 128, 128, 0.6);
@@ -139,6 +133,7 @@ figcaption {
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  font-size: 1.3rem;
 }
 
 .city-temp {
@@ -176,7 +171,7 @@ figcaption {
   }
 }
 
-@media screen and (max-width: 880px) {
+@media screen and (max-width: 980px) {
   .container {
     margin: 0 auto;
     flex-direction: column;
@@ -194,7 +189,4 @@ figcaption {
 
 }
 
-@media screen and (max-width: 500px) {
-
-
-}
+@media screen and (max-width: 500px) {}
